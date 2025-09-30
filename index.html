@@ -90,7 +90,10 @@
 }
 
     .p-title{font-weight:600}
-    .p-desc{font-size:13px;color:var(--muted)}
+    .p-desc{
+      font-size:13px;
+      color:var(--muted);
+    }
     .p-row{display:flex;justify-content:space-between;align-items:center}
     /* cart drawer */
     .card img {
@@ -120,7 +123,7 @@
     /* modal */
     .modal{position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.45);display:none;align-items:center;justify-content:center;z-index:30}
     .modal.open{display:flex}
-    .modal-card{background:white;border-radius:12px;padding:18px;max-width:760px;width:94%;max-height:90vh;overflow:auto}
+    .modal-card{background:white;border-radius:12px;padding:18px;max-width:760px;width:94%;max-height:100vh;height: 450px;overflow:auto}
     /* age gate */
     .age{position:fixed;left:0;top:0;right:0;bottom:0;background:linear-gradient(180deg,rgba(15,23,42,0.9),rgba(15,23,42,0.95));color:white;display:flex;align-items:center;justify-content:center;z-index:50}
     .age-box{background:rgba(255,255,255,0.03);padding:22px;border-radius:12px;text-align:center;max-width:420px}
@@ -251,40 +254,44 @@
   <script>
     // Dados de exemplo (sem imagens explícitas)
     const products = [
-      {id:1,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Excitante_Unissex_Dragao_C_965.webp'},
-      {id:2,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Excitante_Pinta_Clima_15g__75.webp'},
-      {id:3,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Anestesico_Tesao_Na_Raba_1_877.png'},
-      {id:4,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Retardante_Pika_Turbo_15g__146.png'},
-      {id:5,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Vibrador_Liquido_Power_Shock_2_32.png'},
-      {id:6,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Anestesico_InDolor_15g_Sex_506.png'},
-      {id:7,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel-Sensibilizante-Volume-Maxi-445.png'},
-      {id:8,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Funcional_InTranse_15g_Sex_83.png'},
-      {id:9,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Excitante_Feminino_Diaba_H_258.png'},
-      {id:10,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Adstringente_Lacradinha_15_636.png'},
-      {id:11,title:'Óleo Clito',price:30.00,desc:'Estimulação sensorial para ela.',img:'img/Vibrador_Liquido_Eletrizante_C_281.webp'},
-      {id:12,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Excitante_Feminino_Lanca_Xanas_220.png'},
-      {id:13,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Funcional_Super_Intenso_Bo_890.webp'},
-      {id:14,title:'Hot Ice E Vibra Xana Loka 15g Hot Flowers',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Funcional_Hot_Ice_E_Vibra__594.jpg'},
-      {id:15,title:'Tesão de Egua',price:15.00,desc:'Estimulante afrodisíaco.',img:'img/Energetico_Afrodisaco_Feminino_641.webp'},
-      {id:16,title:'Plug Aço',price:40.00,desc:'Plug anal em aço inoxidável.',img:'img/Plug_Anal_Em_Metal_Tamanho_PP__43.jpg'},
-      {id:17,title:'Egg Masturbador',price:40.00,desc:'Texturas internas para prazer intenso.',img:'img/egg-masturbador.webp'},
-      {id:18,title:'Anel Peniano',price:30.00,desc:'Prolonga e intensifica o prazer.',img:'img/Anel_Peniano_Com_Vibro_Borbole_737.jpg'},
-      {id:19,title:'Bolinhas Explosivas',price:20.00,desc:'Sensação única durante a relação.',img:'img/Bolinha_Beijavel_Yummy_Sexy_Fa_672.webp'},
-      {id:20,title:'Bullet',price:40.00,desc:'Mini vibrador discreto e potente.',img:'img/Vibrador_Bullet_Ovo_Vibratorio_630.jpg'},
-      {id:21,title:'Caneta Beijável',price:20.00,desc:'Escreva na pele com sabor e prazer.',img:'img/Caneta_Comestvel_Sweet_Body_25_981.jpg'},
-      {id:19,title:'Bolinhas Explosivas',price:20.00,desc:'Sensação única durante a relação.',img:'img/Bolinha_Hot_Ball__Xana_Loka_Co_190.jpg'},
-      
-      {id:22,title:'D4 Gel',price:30.00,desc:'Excitante unissex com efeito intenso.',img:'img/Lubrificante-ntimo-D4-Frozen-6-177.png'},
-      {id:23,title:'Yummy',price:20.00,desc:'Gel beijável com sabor irresistível.',img:'img/Gel_Termico_Comestvel_Yummy_15_809.png'},
-      {id:24,title:'Yummy Gourmet',price:30.00,desc:'Gel beijável gourmet para novas experiências.',img:'img/Gel_Termico_Comestvel_Yummy_Go_753.webp'},
-      {id:25,title:'Prótese c/ Vibro Yaffa',price:90.00,desc:'Prótese realística com vibração.',img:'img/Protese_Com_Vibro_Interno_195c_800.webp'},
-      {id:26,title:'Vibrador Ponto G Premium',price:40.00,desc:'Design anatômico para máxima estimulação.',img:'img/Vibrador_Ponto_G_Golfinho_Liso_516.webp'},
-      {id:1,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Prolongador-De-Erecao-Capitao--812.png'},
-      {id:2,title:'Gel Estimulante Pinto Loko 15g Hot Flowers',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Estimulante_Pinto_Loko_15g_344.webp'},
-      {id:2,title:'Gel Lubrificante Sedenta Molhada 50g Pepper Blend',price:35.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Lubrificante_Sedenta_Molha_277.jpg'},
-      {id:2,title:'Lubrificante Beijável Fácil Lub 18g Chillies',price:18.00,desc:'Sensações intensas para momentos especiais.',img:'img/Lubrificante_Beijavel_Facil_Lu_757.jpg'},
-      {id:2,title:'Perfume De Calcinha 40ml Apinil',price:25.00,desc:'Sensações intensas para momentos especiais.',img:'img/Perfume-De-Calcinha-40ml-Apini-344.jpg'}
-    ];
+    {"id":1,"title":"Gel Excitante Unissex Dragao 15ml","price":30.00,"desc":"Proporciona aquecimento e formigamento intenso, aumentando o prazer de ambos os parceiros.","img":"img/Gel_Excitante_Unissex_Dragao_C_965.webp","cat":"lubrificantes"},
+    {"id":2,"title":"Gel Excitante Pinta Clima 15ml","price":30.00,"desc":"Ideal para criar clima e deixar a relação ainda mais envolvente com sensações de excitação imediata.","img":"img/Gel_Excitante_Pinta_Clima_15g__75.webp","cat":"lubrificantes"},
+    {"id":3,"title":"Gel Anestesico Tesao Na Raba 15ml","price":30.00,"desc":"Desenvolvido para reduzir a sensibilidade e proporcionar conforto em momentos intensos.","img":"img/Gel_Anestesico_Tesao_Na_Raba_1_877.png","cat":"lubrificantes"},
+    {"id":4,"title":"Gel Retardante Pika Turbo 15ml","price":30.00,"desc":"Ajuda a prolongar o desempenho, retardando a ejaculação sem perder a sensibilidade.","img":"img/Gel_Retardante_Pika_Turbo_15g__146.png","cat":"lubrificantes"},
+    {"id":5,"title":"Vibrador Liquido Power Shock 15ml","price":30.00,"desc":"Fórmula eletrizante que provoca ondas de vibração na região aplicada.","img":"img/Vibrador_Liquido_Power_Shock_2_32.png","cat":"lubrificantes"},
+    {"id":6,"title":"Gel Anestesico InDolor 15ml","price":30.00,"desc":"Perfeito para quem busca mais conforto em penetrações, diminuindo desconfortos.","img":"img/Gel_Anestesico_InDolor_15g_Sex_506.png","cat":"lubrificantes"},
+    {"id":7,"title":"Gel Sensibilizante Volume Maxi","price":30.00,"desc":"Intensifica a circulação e aumenta a sensibilidade, proporcionando uma sensação de volume maior.","img":"img/Gel-Sensibilizante-Volume-Maxi-445.PNG","cat":"lubrificantes"},
+    {"id":8,"title":"Gel Funcional InTranse 15ml","price":30.00,"desc":"Estimula de forma progressiva, levando a momentos de puro êxtase.","img":"img/Gel_Funcional_InTranse_15g_Sex_83.png","cat":"lubrificantes"},
+    {"id":9,"title":"Gel Excitante Feminino Diaba 15ml","price":30.00,"desc":"Criado especialmente para mulheres, provoca aquecimento e excitação na região íntima.","img":"img/Gel_Excitante_Feminino_Diaba_H_258.png","cat":"lubrificantes"},
+    {"id":10,"title":"Gel Adstringente Lacradinha 15ml","price":30.00,"desc":"Proporciona sensação de estreitamento, aumentando a intensidade do prazer.","img":"img/Gel_Adstringente_Lacradinha_15_636.png","cat":"lubrificantes"},
+    {"id":11,"title":"Óleo Clito","price":30.00,"desc":"Estimulação direta e intensa do clitóris, potencializando o prazer feminino.","img":"img/Vibrador_Liquido_Eletrizante_C_281.webp","cat":"lubrificantes"},
+    {"id":12,"title":"Excitante Feminino Lanca Xanas 15ml","price":30.00,"desc":"Aumenta o desejo e a sensibilidade feminina, garantindo novas experiências.","img":"img/Excitante_Feminino_Lanca_Xanas_220.png","cat":"lubrificantes"},
+    {"id":13,"title":"Super Intenso Bomba Relogio 15ml","price":30.00,"desc":"Ativação imediata com efeito de aquecimento explosivo.","img":"img/Gel_Funcional_Super_Intenso_Bo_890.webp","cat":"lubrificantes"},
+    {"id":14,"title":"Hot Ice E Vibra Xana Loka 15g Hot Flowers","price":30.00,"desc":"Combinação de calor e frescor com vibração que surpreende.","img":"img/Gel_Funcional_Hot_Ice_E_Vibra__594.jpg","cat":"lubrificantes"},
+    {"id":15,"title":"Tesão de Egua","price":15.00,"desc":"Estimulante afrodisíaco que intensifica o desejo e aquece a relação.","img":"img/Energetico_Afrodisaco_Feminino_641.webp","cat":"afrodisiacos"},
+    {"id":16,"title":"Plug Aço","price":40.00,"desc":"Plug anal em aço inoxidável, elegante, higiênico e de fácil higienização.","img":"img/Plug_Anal_Em_Metal_Tamanho_PP__43.jpg","cat":"acessorios"},
+    {"id":17,"title":"Dado Cubo Do Amor 2 Unid","price":40.00,"desc":"Jogo erótico divertido que adiciona criatividade e ousadia às preliminares.","img":"img/Dado_Cubo_Do_Amor_2_Unid_Sexy__880.webp","cat":"acessorios"},
+    {"id":18,"title":"Egg Masturbador","price":40.00,"desc":"Masturbador discreto com texturas internas que proporcionam prazer intenso.","img":"img/egg-masturbador.webp","cat":"acessorios"},
+    {"id":19,"title":"Anel Peniano","price":30.00,"desc":"Prolonga a ereção, intensifica a penetração e aumenta o prazer do casal.","img":"img/Anel_Peniano_Com_Vibro_Borbole_737.jpg","cat":"acessorios"},
+    {"id":20,"title":"Bolinhas Explosivas","price":20.00,"desc":"Liberam aroma e líquido beijável que aumentam a excitação.","img":"img/Bolinha_Beijavel_Yummy_Sexy_Fa_672.webp","cat":"bolinhas"},
+    {"id":21,"title":"Bullet","price":40.00,"desc":"Mini vibrador discreto, silencioso e potente para estímulos externos.","img":"img/Vibrador_Bullet_Ovo_Vibratorio_630.jpg","cat":"vibradores"},
+    {"id":22,"title":"Bolinhas Explosivas","price":20.00,"desc":"Estouram durante o ato, trazendo frescor e intensidade ao momento.","img":"img/Bolinha_Hot_Ball__Xana_Loka_Co_190.jpg","cat":"bolinhas"},
+    {"id":23,"title":"D4 Gel","price":30.00,"desc":"Excitante unissex de ação rápida, com efeito refrescante e estimulante.","img":"img/Lubrificante-ntimo-D4-Frozen-6-177.png","cat":"lubrificantes"},
+    {"id":24,"title":"Yummy","price":20.00,"desc":"Gel térmico beijável, disponível em sabores deliciosos, perfeito para brincadeiras orais.","img":"img/Gel_Termico_Comestvel_Yummy_15_809.png","cat":"lubrificantes"},
+    {"id":25,"title":"Yummy Gourmet","price":30.00,"desc":"Versão gourmet do gel beijável, ainda mais sofisticada e irresistível.","img":"img/Gel_Termico_Comestvel_Yummy_Go_753.webp","cat":"lubrificantes"},
+    {"id":26,"title":"Prótese c/ Vibro Yaffa","price":90.00,"desc":"Prótese realística com vibração intensa e textura detalhada.","img":"img/Protese_Com_Vibro_Interno_195c_800.webp","cat":"vibradores"},
+    {"id":27,"title":"Dados Jogo Do Prazer Hot 2 Uni","price":40.00,"desc":"Dados eróticos para apimentar a relação de forma lúdica.","img":"img/Dados_Jogo_Do_Prazer_Hot_2_Uni_514.webp","cat":"acessorios"},
+    {"id":28,"title":"Vibrador Ponto G Premium","price":40.00,"desc":"Design anatômico que alcança o ponto G com máxima estimulação.","img":"img/Vibrador_Ponto_G_Golfinho_Liso_516.webp","cat":"vibradores"},
+    {"id":29,"title":"Anel Peniano Com Vibro Bichinh","price":40.00,"desc":"Anel vibratório divertido que estimula simultaneamente o pênis e o clitóris.","img":"img/Anel_Peniano_Com_Vibro_Bichinh_860.png","cat":"vibradores"},
+    {"id":30,"title":"Prolongador De Erecao Capitao Bengala 15ml","price":30.00,"desc":"Ajuda a manter a ereção por mais tempo com sensação de vigor extra.","img":"img/Prolongador-De-Erecao-Capitao--812.png","cat":"lubrificantes"},
+    {"id":31,"title":"Gel Estimulante Pinto Loko 15g Hot Flowers","price":30.00,"desc":"Gel divertido que aquece e provoca intensas sensações.","img":"img/Gel_Estimulante_Pinto_Loko_15g_344.webp","cat":"lubrificantes"},
+    {"id":32,"title":"Gel Lubrificante Sedenta Molhada 50g Pepper Blend","price":35.00,"desc":"Lubrificante de alta performance com efeito molhado prolongado.","img":"img/Gel_Lubrificante_Sedenta_Molha_277.jpg","cat":"lubrificantes"},
+    {"id":33,"title":"Lubrificante Beijável Fácil Lub 18g Chillies","price":18.00,"desc":"Lubrificante leve, com sabor delicioso, ideal para momentos descontraídos.","img":"img/Lubrificante_Beijavel_Facil_Lu_757.jpg","cat":"lubrificantes"},
+    {"id":34,"title":"Caneta Beijável","price":20.00,"desc":"Escreva na pele e saboreie com toques irresistíveis.","img":"img/Caneta_Comestvel_Sweet_Body_25_981.jpg","cat":"cosmeticos"},
+    {"id":35,"title":"Perfume De Calcinha 40ml Apinil","price":25.00,"desc":"Perfume íntimo que desperta desejo e curiosidade.","img":"img/Perfume-De-Calcinha-40ml-Apini-344.jpg","cat":"cosmeticos"},
+    {"id":36,"title":"Creme Gel Hidratante Para Virilha Sweet Girl 240ml Chillies","price":25.00,"desc":"Hidratação delicada para a região íntima, deixando a pele macia e perfumada.","img":"img/Creme_Gel_Hidratante_Para_Viri_413.webp","cat":"cosmeticos"}
+];
+
 
 
     const container = document.querySelector('.grid');
@@ -318,7 +325,7 @@
         el.innerHTML = `
           <div class="p-img">
             <img src="${p.img || 'img/placeholder.jpg'}" alt="${p.title}" >
-            
+            <small style="color:var(--muted);display:none;">${p.cat}</small>
         </div>
           <div class="p-title">${p.title}</div>
           <div class="p-desc">${p.desc}</div>
@@ -384,7 +391,7 @@
         <div style='display:flex;gap:18px;align-items:flex-start'>
           <div style="flex:1">
             <img src="${p.img || 'img/placeholder.jpg'}" alt="${p.title}" 
-                style="width:100%;max-height:220px;object-fit:cover;border-radius:10px">
+                style="width:100%;max-height:100%;object-fit:cover;border-radius:10px">
             <small style="color:var(--muted)">${p.cat}</small>
         </div>
 
@@ -540,7 +547,18 @@ function showToast(msg){
     // Init
     renderProducts(products);
     updateCartUI();
-
+    // Filtro por categorias
+    document.querySelectorAll('.categories button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const cat = btn.getAttribute('data-cat');
+        if(cat === 'all'){
+          renderProducts(products);
+        } else {
+          const filtrados = products.filter(p => p.cat === cat);
+          renderProducts(filtrados);
+        }
+      });
+    });
     // small UX: close drawer when clicking outside
     document.addEventListener('click', e=>{ if(!e.target.closest('.drawer') && !e.target.closest('#cartToggle')) drawer.classList.remove('open'); })
     // toggle sidebar no mobile
@@ -555,5 +573,4 @@ function showToast(msg){
     });
   </script>
 </body>
-
 </html>
